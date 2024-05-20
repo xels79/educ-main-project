@@ -3,11 +3,15 @@
     <div class="design__top design_RB"></div>
     <div class="design__top design_MB"></div>
     <div class="design__top design_LB"></div>
-  
+
     <div class="site__heading">
-      <p-menubar [model]="mainMenu"></p-menubar>
+      <p-menubar [model]="mainMenu">
+        <ng-template pTemplate="start">
+          <img src="\assets\img\main\logo.png" height="60">
+        </ng-template>
+      </p-menubar>
     </div>
     <div class="site_body">
-      B
+      <router-outlet></router-outlet>
     </div>
 </div>

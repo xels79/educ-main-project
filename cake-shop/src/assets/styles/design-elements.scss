@@ -1,0 +1,71 @@
+.design_white_RT{
+  width: 5.91cm;
+  height: 4.59cm;
+  background: url("/assets/img/main/design_white_TR.png") no-repeat;
+  rotate: -90deg;
+  right: 5rem;
+  top:0
+}
+.design_white_LB{
+  width: 5.91cm;
+  height: 4.59cm;
+  background: url("/assets/img/main/design_white_TR.png") no-repeat;
+  rotate: 180deg;
+  left: 0;
+  bottom: 1rem;
+}
+.design_white_LT{
+  height: 5.32cm;
+  width: 1cm;
+  background: url("/assets/img/main/design_white_LB.png") no-repeat;
+  top: 0;
+  left: 2rem;
+}
+.design_white_RB{
+  width: 5.17cm;
+  height: 1.35cm;
+  background: url("/assets/img/main/design_white_BR.png") no-repeat;
+  right: 0;
+  bottom:3rem
+}
+.design_RT{
+  width: 3.34cm;
+  height: 2.59cm;
+  background: url("/assets/img/main/design_TR.png") no-repeat;
+  right: 0;
+  top:4rem
+}
+.design_RB{
+  width: 3.17cm;
+  height: 0.83cm;
+  background: url("/assets/img/main/design_BR.png") no-repeat;
+  right: 0;
+  bottom:1rem
+}
+.design_MB{
+  height: 3.34cm;
+  width: 2.59cm;
+  background: url("/assets/img/main/design_HTR.png") no-repeat;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom:calc(0px)
+}
+.design_LB{
+  height: 3.32cm;
+  width: 0.63cm;
+  background: url("/assets/img/main/design_LB.png") no-repeat;
+  left: 1rem;
+  bottom:0;
+}
+.design__back{
+  position: absolute;
+  background-size:cover;
+  z-index: 5
+  // transform: translate(25%,25%);
+}
+.design__top{
+  position: absolute;
+  background-size:cover;
+  z-index: 15
+  // transform: translate(25%,25%);
+}

@@ -5,7 +5,13 @@ import { ClientComponent } from './client.component';
 const routes: Routes = [
   {
     path:'',
-    component: ClientComponent
+    component: ClientComponent,
+    children:[
+      {
+        path:'',
+        loadChildren:()=>import('./children/main-page/main-page.module').then(m=>m.MainPageModule)
+      }
+    ]
   }
 ];
 
