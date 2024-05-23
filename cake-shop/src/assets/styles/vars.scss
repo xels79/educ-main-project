@@ -1,0 +1,12 @@
+$primary-color: #fbfbfb;
+$primary-bcgk: #c2aba8;
+$text-primary-color: #848383;
+$secondary-text-color: #696867;
+@mixin button-hover($bgcolor){
+  transition: background .125s ease-in-out, transform .2s ease-in-out, box-shadow .2s ease-in-out;
+  &:hover{
+    background: darken($bgcolor, 15%);
+    transform: translateY(-2px);
+    box-shadow: 7px 6px 12px -3px rgba(0, 0, 0, 0.51);
+  }
+}

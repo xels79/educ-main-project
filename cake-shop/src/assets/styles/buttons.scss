@@ -1,0 +1,21 @@
+@use 'sass:color';
+@import './vars.scss';
+.btn{
+  background: #fafbfb;
+  font-size: 1rem;
+  padding: .5rem 2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  border:1px solid transparent;
+  box-shadow: 5px 5px 10px -3px rgba(0, 0, 0, 0.51);
+}
+
+@mixin sub-button($className, $color, $bgcolor){
+  #{$className}{
+    color:$color;
+    background: $bgcolor;
+    @include button-hover($bgcolor);
+  }
+}
+
+@include sub-button(".btn-primary", $primary-color, $primary-bcgk);
