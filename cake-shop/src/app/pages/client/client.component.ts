@@ -6,6 +6,7 @@ import {MenuItem} from 'primeng/api';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
+  showLogin:boolean = false;
   mainMenu: MenuItem[] = [{
     label:'Главная'
   },
@@ -20,12 +21,22 @@ export class ClientComponent implements OnInit {
   },
   {
     label:'О нас'
-  }
+  },
 ];
 
   constructor() { }
 
   ngOnInit(): void {
+    this.mainMenu.push({
+      label:"Войти",
+      command:()=>{
+        console.log("click");
+        this.showLogin = true;
+      }
+    });
+  }
+  closeLoginDialog(): void {
+    this.showLogin = false;
   }
 
 }

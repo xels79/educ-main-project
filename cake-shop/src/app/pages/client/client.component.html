@@ -13,5 +13,6 @@
     </div>
     <div class="site_body">
       <router-outlet></router-outlet>
+      <app-login [visible]="showLogin" (closeClick)="closeLoginDialog()"></app-login>
     </div>
 </div>
