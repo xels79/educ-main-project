@@ -8,7 +8,8 @@ import {MenuItem} from 'primeng/api';
 export class ClientComponent implements OnInit {
   showLogin:boolean = false;
   mainMenu: MenuItem[] = [{
-    label:'Главная'
+    label:'Главная',
+    url:'/'
   },
   {
     label:'Галерея тортов'

@@ -10,7 +10,11 @@ const routes: Routes = [
       {
         path:'',
         loadChildren:()=>import('./children/main-page/main-page.module').then(m=>m.MainPageModule)
-      }
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./children/users/users.module').then(m=>m.UsersModule)
+      },    
     ]
   }
 ];

@@ -7,6 +7,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { LoginComponent } from './children/login/login.component';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
+import { Title } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,10 @@ import { ButtonModule } from 'primeng/button';
     ClientRoutingModule,
     MenubarModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+  ],
+  providers:[
+    Title
   ]
 })
 export class ClientModule { }
