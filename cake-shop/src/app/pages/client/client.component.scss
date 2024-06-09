@@ -68,5 +68,12 @@
         display: inline-block;
       }
       }
+      .p-menuitem-link-active{
+        background: lighten( #c2aba8, 15% ) ;
+      }
+      .p-menubar > p-menubarsub .p-menubar-root-list > .p-menuitem > .p-menuitem-link-active > .p-menuitem-text{
+        color:#495057;
+      }
+
     }
 }

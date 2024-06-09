@@ -1,1 +1,27 @@
-<p>user-add works!</p>
+<div class="site__page-600px registration">
+    <h1>Регистрация</h1>
+    <form [formGroup]="regForm"  (submit)="submit()">
+        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Имя пользователя', id:'realNameID', type:'text', formname:'username'}}"></ng-container>
+        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Логин', id:'loginID', type:'text', formname:'realname'}}"></ng-container>
+        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Почта', id:'emailID', type:'text', formname:'email'}}"></ng-container>
+        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Пароль', id:'inputPassword', type:'password', formname:'password'}}"></ng-container>
+        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Павторите пароль', id:'inputPasswordRepeat', type:'password', formname:'passwordRepeat'}}"></ng-container>
+        <div class="col-12">
+            <button class="mbtn btn-primary" type="submit" [disabled]="regForm.invalid">Сохранить</button>
+        </div>        
+        <ng-template #inputGr let-data>
+            <div class="mb-3 row">
+                <label for="{{data.id}}" class="col-sm-4 col-form-label">{{data.label}}:</label>
+                <div class="col-sm-8">
+                    <input
+                        type="{{data.type}}"
+                        [class]="'form-control' + (errors(data.formname)?' is-invalid':(isValid(data.formname)?' is-valid':''))"
+                        id="{{data.id}}"
+                        formControlName="{{data.formname}}"
+                    />
+                    <div class="invalid-feedback">{{errors(data.formname)}}</div>
+                </div>
+            </div>
+        </ng-template>
+    </form>
+</div>

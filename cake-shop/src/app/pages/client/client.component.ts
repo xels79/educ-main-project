@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import { filter } from 'rxjs';
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -9,7 +11,8 @@ export class ClientComponent implements OnInit {
   showLogin:boolean = false;
   mainMenu: MenuItem[] = [{
     label:'Главная',
-    url:'/'
+    routerLink:['/'],
+    routerLinkActiveOptions: { exact: true } 
   },
   {
     label:'Галерея тортов'
@@ -35,7 +38,25 @@ export class ClientComponent implements OnInit {
         this.showLogin = true;
       }
     });
+  //   this.router.events.pipe(
+  //     filter(data=>data instanceof NavigationEnd)
+  //   ).subscribe((routData)=>{
+  //     this.setAciveMenu((routData as NavigationEnd).url);
+  //   });
   }
+
+  // ngAfterViewInit(): void {
+  //   this.setAciveMenu(this.router.routerState.snapshot.url)
+  // }
+
+  // private setAciveMenu(url:string): void {
+  //   switch(url){
+  //     case '/':
+  //       //this.mainMenu[0]
+  //       break;
+  //   }
+  // }
+
   closeLoginDialog(): void {
     this.showLogin = false;
   }

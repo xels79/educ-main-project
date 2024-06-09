@@ -53,3 +53,19 @@ body{
     position: relative;
     z-index: 100;
 }
+
+.site__page-400px{
+  display: block;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.site__page-600px{
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.site__page-800px{
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+}

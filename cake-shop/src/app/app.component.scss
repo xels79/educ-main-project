@@ -1,0 +1,19 @@
+:host{
+    ::ng-deep{
+        .p-dialog-header{
+            padding: .5rem 1.5rem;
+        }
+        .p-dialog{
+            background: url("/assets/img/main/bckg2.jpg");
+            .p-dialog-header,.p-dialog-content{
+                background: transparent;
+            }
+            .p-dialog-header{
+                background: rgba(80,0,0,0.05);
+            }
+            .p-dialog-content{
+                padding-bottom: 1.5rem;
+            }
+        }
+    }
+}
