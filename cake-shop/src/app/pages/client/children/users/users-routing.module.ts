@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path:'register',
     component:UserAddComponent
+  },
+  {
+    path:'update/:id',
+    component:UserAddComponent
   }
 ];
 

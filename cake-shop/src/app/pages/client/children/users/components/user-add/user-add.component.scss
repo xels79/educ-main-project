@@ -1,8 +1,33 @@
 @import '../../../../../../../assets/styles/vars.scss';
-
+:host{
+    ::ng-deep{
+        >.registration{
+            >.p-element{
+                display: block;
+            }    
+            >form>.registration__controls-block>.dd-form>.dd-cont>p-dropdown{
+                display: block;
+                p-dropdownitem{
+                    display: block;
+                    .p-dropdown-item{
+                        display: block;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .p-dropdown{
+            display: flex;
+            .p-inputtext{
+                padding: .375rem .75rem;
+                display: block;
+            }
+        }
+    }
+}
 h1{
     color: $text-primary-color;
 }
 .registration__controls-block{
-    min-height: 395px;
+    min-height: 355px;
 }

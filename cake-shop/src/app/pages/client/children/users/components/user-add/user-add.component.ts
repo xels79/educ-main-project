@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+import { IRole, TRoles } from 'src/app/models/IUsers';
 import { EmailValidate } from 'src/app/validators/EmailValidate';
 import { TrimValidate } from 'src/app/validators/TrimValidate';
 import { PasswordConfirmViladator, PasswordStrength } from 'src/app/validators/password';
@@ -10,25 +12,48 @@ import { PasswordConfirmViladator, PasswordStrength } from 'src/app/validators/p
   templateUrl: './user-add.component.html',
   styleUrls: ['./user-add.component.scss']
 })
+
 export class UserAddComponent implements OnInit {
 
-  regForm: FormGroup;
+  regForm: FormGroup | null;
+  leadingText = 'Регистрация';
+  private _isUpdate = false;
+  rolesList: IRole[] = [
+    {name:'Администратор', code:'admin'},
+    {name:'Редактор', code: "moder"},
+    {name:'Пользователь', code:'user'}
+  ];
 
-
-  constructor(private title:Title) { }
+  constructor(
+    private title:Title,
+    private router:ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.title.setTitle("Регистрация пользователя");
-    this.regForm = new FormGroup({
-      username: new FormControl<string>('',{ validators:[TrimValidate(), Validators.required, Validators.minLength(3)], updateOn: 'blur'}),
-      realname: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(4)], updateOn: 'blur'}),
-      email:new FormControl<string>('',{ validators:[TrimValidate(), Validators.required, EmailValidate()], updateOn: 'blur'}),
-      password: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(6), PasswordStrength()], updateOn: 'blur'}),
-      passwordRepeat: new FormControl<string>('',{ validators:[PasswordConfirmViladator('password'), Validators.required]})
-    });
+    const id =this.router.snapshot.paramMap.get('id');
+    if ( id ){
+      this.title.setTitle("Обновить пользователя");
+      this.leadingText = 'Обновить данные пользователя';
+      this._isUpdate = true;
+    }else{
+      this.title.setTitle("Регистрация пользователя");
+      this.regForm = new FormGroup({
+        username: new FormControl<string>('',{ validators:[TrimValidate(), Validators.required, Validators.minLength(3)], updateOn: 'blur'}),
+        realname: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(4)], updateOn: 'blur'}),
+        email:new FormControl<string>('',{ validators:[TrimValidate(), Validators.required, EmailValidate()], updateOn: 'blur'}),
+        password: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(6), PasswordStrength()], updateOn: 'blur'}),
+        passwordRepeat: new FormControl<string>('',{ validators:[PasswordConfirmViladator('password'), Validators.required]}),
+        role: new FormControl<TRoles>('user')
+      });
+    }
   }
+
+  get isUpdate(): boolean {
+    return this._isUpdate;
+  }
+
   errors(fieldName:string): string {
-    const fc:FormControl|null = (this.regForm.get(fieldName) as FormControl | null);
+    const fc:FormControl|null = (this.regForm?.get(fieldName) as FormControl | null);
     if (fc!==null && fc.errors && (fc.dirty || fc.touched)){
       if (fc.errors['required']){
         return 'Поле необходимо заполнить'
@@ -51,11 +76,11 @@ export class UserAddComponent implements OnInit {
     }
   }
   isValid(fieldName:string){
-    const fc:FormControl|null = (this.regForm.get(fieldName) as FormControl | null);
+    const fc:FormControl|null = (this.regForm?.get(fieldName) as FormControl | null);
     return fc===null || (fc.touched && (!fc.errors || !fc.errors[fieldName]));
   }
   submit(){
-    const rawData = this.regForm.getRawValue();
+    const rawData = this.regForm?.getRawValue();
     const formData = new FormData();
     console.log(rawData);
   }

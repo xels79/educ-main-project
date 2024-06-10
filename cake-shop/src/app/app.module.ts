@@ -17,7 +17,8 @@ registerLocaleData(localeRu, 'ru');
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'ru' }

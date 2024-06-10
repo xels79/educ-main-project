@@ -1,15 +1,27 @@
-<div class="site__page-600px registration">
-    <h1>Регистрация</h1>
-    <form [formGroup]="regForm"  (submit)="submit()" class="d-flex flex-column">
+<div class="site__page-800px registration">
+    <h1>{{leadingText}}</h1>
+    <form *ngIf="!!regForm; else loaderShow" [formGroup]="regForm"  (submit)="submit()" class="d-flex flex-column">
         <div class="registration__controls-block">
             <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Имя пользователя', id:'realNameID', type:'text', formname:'username'}}"></ng-container>
             <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Логин', id:'loginID', type:'text', formname:'realname'}}"></ng-container>
             <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Почта', id:'emailID', type:'text', formname:'email'}}"></ng-container>
             <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Пароль', id:'inputPassword', type:'password', formname:'password'}}"></ng-container>
             <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Павторите пароль', id:'inputPasswordRepeat', type:'password', formname:'passwordRepeat'}}"></ng-container>
+            <div class="mb-3 row dd-form">
+                <label for="rolesID" class="col-sm-4 col-form-label">Тип учeтной записи:</label>
+                <div class="col-sm-8 dd-cont">
+                    <p-dropdown 
+                        id="rolesID"
+                        [options]="rolesList"
+                        optionLabel="name"
+                        optionValue="code"
+                        formControlName="role"
+                    ></p-dropdown>
+                </div>
+            </div>
         </div>
         <div class="col-12">
-            <button class="mbtn btn-primary" type="submit" [disabled]="regForm.invalid">Сохранить</button>
+            <button class="mbtn btn-primary" type="submit" [disabled]="!regForm || regForm.invalid">Сохранить</button>
         </div>        
         <ng-template #inputGr let-data>
             <div class="mb-3 row">
@@ -27,3 +39,4 @@
         </ng-template>
     </form>
 </div>
+<ng-template #loaderShow><p-progressBar mode="indeterminate"  [style]="{ height: '6px' }"></p-progressBar></ng-template>
