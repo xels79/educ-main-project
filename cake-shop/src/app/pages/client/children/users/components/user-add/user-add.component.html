@@ -1,11 +1,13 @@
 <div class="site__page-600px registration">
     <h1>Регистрация</h1>
-    <form [formGroup]="regForm"  (submit)="submit()">
-        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Имя пользователя', id:'realNameID', type:'text', formname:'username'}}"></ng-container>
-        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Логин', id:'loginID', type:'text', formname:'realname'}}"></ng-container>
-        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Почта', id:'emailID', type:'text', formname:'email'}}"></ng-container>
-        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Пароль', id:'inputPassword', type:'password', formname:'password'}}"></ng-container>
-        <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Павторите пароль', id:'inputPasswordRepeat', type:'password', formname:'passwordRepeat'}}"></ng-container>
+    <form [formGroup]="regForm"  (submit)="submit()" class="d-flex flex-column">
+        <div class="registration__controls-block">
+            <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Имя пользователя', id:'realNameID', type:'text', formname:'username'}}"></ng-container>
+            <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Логин', id:'loginID', type:'text', formname:'realname'}}"></ng-container>
+            <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Почта', id:'emailID', type:'text', formname:'email'}}"></ng-container>
+            <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Пароль', id:'inputPassword', type:'password', formname:'password'}}"></ng-container>
+            <ng-container *ngTemplateOutlet="inputGr ;context: {$implicit: {label:'Павторите пароль', id:'inputPasswordRepeat', type:'password', formname:'passwordRepeat'}}"></ng-container>
+        </div>
         <div class="col-12">
             <button class="mbtn btn-primary" type="submit" [disabled]="regForm.invalid">Сохранить</button>
         </div>        

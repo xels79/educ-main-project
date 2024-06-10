@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, I18nPluralPipe } from '@angular/common';
 
 import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './components/users.component';
@@ -18,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     UsersRoutingModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    I18nPluralPipe
   ]
 })
 export class UsersModule { }

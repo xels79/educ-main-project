@@ -14,13 +14,14 @@ export class UserAddComponent implements OnInit {
 
   regForm: FormGroup;
 
+
   constructor(private title:Title) { }
 
   ngOnInit(): void {
     this.title.setTitle("Регистрация пользователя");
     this.regForm = new FormGroup({
       username: new FormControl<string>('',{ validators:[TrimValidate(), Validators.required, Validators.minLength(3)], updateOn: 'blur'}),
-      realname: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(3)], updateOn: 'blur'}),
+      realname: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(4)], updateOn: 'blur'}),
       email:new FormControl<string>('',{ validators:[TrimValidate(), Validators.required, EmailValidate()], updateOn: 'blur'}),
       password: new FormControl<string>('',{ validators:[Validators.required, Validators.minLength(6), PasswordStrength()], updateOn: 'blur'}),
       passwordRepeat: new FormControl<string>('',{ validators:[PasswordConfirmViladator('password'), Validators.required]})
@@ -33,7 +34,7 @@ export class UserAddComponent implements OnInit {
         return 'Поле необходимо заполнить'
       }
       if (fc.errors['minlength']){
-        return `Длина должнабыть не ${fc.errors['minlength'].requiredLength} меньше символов, еще ${fc.errors['minlength'].requiredLength - fc.errors['minlength'].actualLength}`
+        return `Длина должнабыть не меньше ${fc.errors['minlength'].requiredLength} символов, еще ${this.messageMapping(fc.errors['minlength'].requiredLength - fc.errors['minlength'].actualLength)}`
       }
       if (fc.errors['incorrectEmailAddress']){
         return 'Введите коректный email'
@@ -58,4 +59,20 @@ export class UserAddComponent implements OnInit {
     const formData = new FormData();
     console.log(rawData);
   }
+
+  private messageMapping(num:number):string{
+    const vals=[
+      'один символ',
+      '# символa',
+      '# символa',
+      '# символa',
+      '# символов'
+    ];
+    let cmpStr=vals[vals.length-1];
+    if (num-1<vals.length-1){
+      cmpStr=vals[num-1];
+    }
+    return cmpStr.replace('#',`${num}`);
+  }
+
 }
